@@ -71,7 +71,7 @@ export default function Header() {
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg dark:bg-gray-900/95'
+          ? 'bg-black/95 backdrop-blur-md shadow-lg border-b border-gray-900'
           : 'bg-transparent'
       }`}
     >
@@ -81,12 +81,12 @@ export default function Header() {
           <Link
             href="#hero"
             onClick={(e) => scrollToSection(e, '#hero')}
-            className="flex items-center space-x-2 text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="flex items-center space-x-2 text-xl font-bold text-white hover:text-blue-400 transition-colors"
           >
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               MOEEN
             </span>
-            <span className="text-gray-600 dark:text-gray-300">/ AI Automation</span>
+            <span className="text-gray-400">/ AI Automation</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,7 +96,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="relative text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {link.label}
                 {activeSection === link.href && (
@@ -123,7 +123,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="lg:hidden p-2 rounded-md text-gray-300 hover:bg-gray-900"
             aria-label="Toggle menu"
           >
             <svg
@@ -152,7 +152,7 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden py-4 space-y-2 border-t border-gray-200 dark:border-gray-700 overflow-hidden"
+              className="lg:hidden py-4 space-y-2 border-t border-gray-800 overflow-hidden"
             >
               {navLinks.map((link, index) => (
                 <motion.div
@@ -164,7 +164,7 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
-                    className="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                    className="block px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-900 rounded-md"
                   >
                     {link.label}
                   </Link>
