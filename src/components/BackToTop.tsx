@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,26 +26,48 @@ export default function BackToTop() {
     });
   };
 
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   return (
-    <button
-      onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-40 p-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-      }`}
-      aria-label="Back to top"
-    >
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
-      </svg>
-    </button>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          onClick={scrollToTop}
+          initial={{ opacity: 0, scale: 0, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0, y: 20 }}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 20,
+            duration: prefersReducedMotion ? 0 : 0.3,
+          }}
+          className="fixed bottom-8 right-8 z-40 p-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl"
+          aria-label="Back to top"
+        >
+          <motion.svg
+            className="w-6 h-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            animate={{ y: [0, -3, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </motion.svg>
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }
 
