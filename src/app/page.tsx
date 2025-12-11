@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-black">
       <Header />
       <ScrollProgress />
       <BackToTop />
@@ -31,11 +31,11 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="min-h-screen flex items-center justify-center pt-20 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden"
+        className="min-h-screen flex items-center justify-center pt-20 lg:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden"
       >
         {/* Animated Background Elements */}
         <motion.div
-          className="absolute top-20 right-20 w-72 h-72 bg-blue-200 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30"
+          className="absolute top-20 right-20 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl opacity-40"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, 30, 0],
@@ -48,7 +48,7 @@ export default function Home() {
           }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-purple-200 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30"
+          className="absolute bottom-20 left-20 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl opacity-40"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, -40, 0],
@@ -70,7 +70,7 @@ export default function Home() {
                   initial={{ scale: 0.9 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-                  className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium mb-6"
+                  className="inline-block px-4 py-2 bg-blue-600/20 text-blue-400 rounded-full text-sm font-medium mb-6 border border-blue-600/30"
                 >
                   AI Automation Engineer · n8n Specialist
                 </motion.div>
@@ -80,11 +80,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
               >
                 I build AI-powered automations that{' '}
                 <motion.span
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent inline-block"
+                  className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent inline-block"
                   animate={{
                     backgroundPosition: ['0%', '100%', '0%'],
                   }}
@@ -103,7 +103,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0"
+                className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0"
               >
                 I design and deploy custom n8n flows, AI agents, and workflow automations that
                 reduce manual work, speed up operations, and let your team focus on high-value
@@ -121,14 +121,20 @@ export default function Home() {
                     key={index}
                     variants={staggerItemVariants}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm cursor-default"
+                    className="bg-gray-900 rounded-lg p-4 shadow-lg border border-gray-800 cursor-default"
                   >
                     <div
-                      className={`text-2xl md:text-3xl font-bold text-${metric.color}-600 dark:text-${metric.color}-400`}
+                      className={`text-2xl md:text-3xl font-bold ${
+                        metric.color === 'blue'
+                          ? 'text-blue-400'
+                          : metric.color === 'purple'
+                            ? 'text-purple-400'
+                            : 'text-indigo-400'
+                      }`}
                     >
                       {metric.value}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{metric.label}</div>
+                    <div className="text-sm text-gray-400">{metric.label}</div>
                   </motion.div>
                 ))}
               </StaggerContainer>
@@ -153,7 +159,7 @@ export default function Home() {
                   <Link
                     href="#automations"
                     onClick={(e) => scrollToSection(e, '#automations')}
-                    className="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all text-center block"
+                    className="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all text-center block"
                   >
                     View My Automations
                   </Link>
@@ -161,10 +167,10 @@ export default function Home() {
               </motion.div>
 
               <FadeIn delay={1.2}>
-                <p className="text-sm text-gray-500 dark:text-gray-500">
+                <p className="text-sm text-gray-400">
                   No fluff. We map your automations and estimate impact.
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                <p className="text-sm text-gray-400 mt-2">
                   Prefer async? Scroll down for live demos, screenshots, and technical breakdowns.
                 </p>
               </FadeIn>
@@ -189,7 +195,7 @@ export default function Home() {
                 }}
               >
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl transform rotate-6 opacity-20"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl transform rotate-6 opacity-30"
                   animate={{
                     rotate: [6, 8, 6],
                   }}
@@ -199,12 +205,12 @@ export default function Home() {
                     ease: 'easeInOut',
                   }}
                 />
-                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
+                <div className="relative bg-gray-900 rounded-2xl p-8 shadow-2xl border border-gray-800">
                   <div className="space-y-4">
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                    <div className="h-4 bg-gray-800 rounded w-3/4"></div>
+                    <div className="h-4 bg-gray-800 rounded w-1/2"></div>
                     <motion.div
-                      className="h-32 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg mt-6 flex items-center justify-center"
+                      className="h-32 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-lg mt-6 flex items-center justify-center border border-blue-500/20"
                       animate={{
                         scale: [1, 1.05, 1],
                       }}
@@ -215,7 +221,7 @@ export default function Home() {
                       }}
                     >
                       <motion.svg
-                        className="w-16 h-16 text-blue-600 dark:text-blue-400"
+                        className="w-16 h-16 text-blue-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -248,10 +254,10 @@ export default function Home() {
       <RevealOnScroll>
         <Section
           id="tools-strip"
-          className="bg-gray-50 dark:bg-gray-800/50 py-8"
+          className="bg-gray-900/50 py-8"
         >
           <div className="text-center mb-6">
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <p className="text-sm font-medium text-gray-300">
               I build with tools you already use
             </p>
           </div>
@@ -265,7 +271,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
                   whileHover={{ scale: 1.1, y: -5 }}
-                  className="text-lg font-semibold text-gray-700 dark:text-gray-300 cursor-default"
+                  className="text-lg font-semibold text-gray-300 cursor-default"
                 >
                   {tool}
                 </motion.div>
@@ -328,12 +334,12 @@ export default function Home() {
               <motion.div key={index} variants={staggerItemVariants}>
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-shadow duration-300"
+                  className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-800"
                 >
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-white mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
+                  <p className="text-gray-300 mb-4">{service.description}</p>
                   <ul className="space-y-2">
                     {service.bullets.map((bullet, i) => (
                       <motion.li
@@ -342,10 +348,10 @@ export default function Home() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 + i * 0.1 }}
-                        className="flex items-start text-sm text-gray-600 dark:text-gray-400"
+                        className="flex items-start text-sm text-gray-300"
                       >
                         <motion.svg
-                          className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2 flex-shrink-0 mt-0.5"
+                          className="w-5 h-5 text-blue-400 mr-2 flex-shrink-0 mt-0.5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -378,7 +384,7 @@ export default function Home() {
           id="automations"
           title="Automation Gallery"
           subtitle="A closer look at some of the n8n flows and AI automations I've built. Each example can be adapted to your stack."
-          className="bg-gray-50 dark:bg-gray-800/30"
+          className="bg-gray-900/30"
         >
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {[
@@ -464,7 +470,7 @@ export default function Home() {
               <motion.div key={index} variants={staggerItemVariants}>
                 <motion.div
                   whileHover={{ scale: 1.03, y: -8, rotateY: 2 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-800"
                 >
                   <div className="flex flex-wrap gap-2 mb-3">
                     {automation.tags.map((tag, tagIndex) => (
@@ -475,23 +481,23 @@ export default function Home() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 + tagIndex * 0.05 }}
                         whileHover={{ scale: 1.1 }}
-                        className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium rounded"
+                        className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-400 text-xs font-medium rounded"
                       >
                         {tag}
                       </motion.span>
                     ))}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-white mb-3">
                     {automation.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                  <p className="text-gray-300 mb-4 text-sm">
                     {automation.description}
                   </p>
                   <div className="mb-4">
-                    <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <p className="text-xs font-semibold text-gray-300 mb-2">
                       Flow Summary:
                     </p>
-                    <ul className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                    <ul className="space-y-1 text-xs text-gray-300">
                       {automation.flow.map((step, i) => (
                         <motion.li
                           key={i}
@@ -502,7 +508,7 @@ export default function Home() {
                           className="flex items-start"
                         >
                           <motion.span
-                            className="text-blue-600 dark:text-blue-400 mr-2"
+                            className="text-blue-400 mr-2"
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{
                               duration: 2,
@@ -523,16 +529,16 @@ export default function Home() {
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.3 }}
-                      className="pt-4 border-t border-gray-200 dark:border-gray-700"
+                      className="pt-4 border-t border-gray-800"
                     >
-                      <p className="text-sm font-medium text-green-700 dark:text-green-400">
+                      <p className="text-sm font-medium text-green-400">
                         Result: {automation.result}
                       </p>
                     </motion.div>
                   )}
                   <motion.button
                     whileHover={{ x: 5 }}
-                    className="mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                    className="mt-4 text-sm font-medium text-blue-400 hover:underline"
                   >
                     View Flow Details →
                   </motion.button>
@@ -604,13 +610,13 @@ export default function Home() {
               <motion.div key={index} variants={staggerItemVariants}>
                 <motion.div
                   whileHover={{ scale: 1.01, y: -5 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-all duration-300 max-w-4xl mx-auto"
+                  className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-all duration-300 max-w-4xl mx-auto border border-gray-800"
                 >
                   <div className="mb-4">
-                    <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                    <span className="text-sm font-semibold text-blue-400">
                       {study.label}
                     </span>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-2 mb-4">
+                    <h3 className="text-2xl font-bold text-white mt-2 mb-4">
                       {study.title}
                     </h3>
                   </div>
@@ -621,8 +627,8 @@ export default function Home() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Problem:</h4>
-                      <p className="text-gray-600 dark:text-gray-400">{study.problem}</p>
+                      <h4 className="font-semibold text-white mb-2">Problem:</h4>
+                      <p className="text-gray-300">{study.problem}</p>
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -630,8 +636,8 @@ export default function Home() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.1 }}
                     >
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Solution:</h4>
-                      <p className="text-gray-600 dark:text-gray-400">{study.solution}</p>
+                      <h4 className="font-semibold text-white mb-2">Solution:</h4>
+                      <p className="text-gray-300">{study.solution}</p>
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -639,7 +645,7 @@ export default function Home() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.2 }}
                     >
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                      <h4 className="font-semibold text-white mb-2">
                         Tech & Tools:
                       </h4>
                       <div className="flex flex-wrap gap-2">
@@ -651,7 +657,7 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + 0.2 + toolIndex * 0.05 }}
                             whileHover={{ scale: 1.1 }}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded"
+                            className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded border border-gray-700"
                           >
                             {tool}
                           </motion.span>
@@ -664,10 +670,10 @@ export default function Home() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.3 }}
                     >
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                      <h4 className="font-semibold text-white mb-2">
                         Architecture Overview:
                       </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 font-mono bg-gray-50 dark:bg-gray-800 p-3 rounded">
+                      <p className="text-sm text-gray-300 font-mono bg-gray-50 dark:bg-gray-800 p-3 rounded">
                         {study.architecture}
                       </p>
                     </motion.div>
@@ -677,7 +683,7 @@ export default function Home() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.4 }}
                     >
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Impact:</h4>
+                      <h4 className="font-semibold text-white mb-2">Impact:</h4>
                       <ul className="space-y-2">
                         {study.impact.map((item, i) => (
                           <motion.li
@@ -686,10 +692,10 @@ export default function Home() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + 0.4 + i * 0.1 }}
-                            className="flex items-start text-gray-600 dark:text-gray-400"
+                            className="flex items-start text-gray-300"
                           >
                             <motion.svg
-                              className="w-5 h-5 text-green-600 dark:text-green-400 mr-2 flex-shrink-0 mt-0.5"
+                              className="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -724,7 +730,7 @@ export default function Home() {
           id="process"
           title="How we'll work together"
           subtitle="A simple, transparent process designed to get you from idea → working automation quickly."
-          className="bg-gray-50 dark:bg-gray-800/30"
+          className="bg-gray-900/30"
         >
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
@@ -756,7 +762,7 @@ export default function Home() {
               <motion.div key={index} variants={staggerItemVariants} className="relative">
                 <motion.div
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow"
+                  className="bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow border border-gray-800"
                 >
                   <motion.div
                     className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4"
@@ -765,10 +771,10 @@ export default function Home() {
                   >
                     {process.step}
                   </motion.div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-white mb-3">
                     {process.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">{process.description}</p>
+                  <p className="text-gray-300">{process.description}</p>
                 </motion.div>
                 {index < 3 && (
                   <motion.div
@@ -834,9 +840,9 @@ export default function Home() {
               <motion.div key={index} variants={staggerItemVariants}>
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-shadow duration-300"
+                  className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-800"
                 >
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-lg font-bold text-white mb-4">
                     {group.category}
                   </h3>
                   <ul className="space-y-2">
@@ -848,10 +854,10 @@ export default function Home() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 + toolIndex * 0.05 }}
                         whileHover={{ x: 5 }}
-                        className="flex items-center text-gray-600 dark:text-gray-400"
+                        className="flex items-center text-gray-300"
                       >
                         <motion.svg
-                          className="w-4 h-4 text-blue-600 dark:text-blue-400 mr-2"
+                          className="w-4 h-4 text-blue-400 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -881,7 +887,7 @@ export default function Home() {
         <Section
           id="about"
           title="About MOEEN"
-          className="bg-gray-50 dark:bg-gray-800/30"
+          className="bg-gray-900/30"
         >
           <div className="max-w-3xl mx-auto">
             <motion.div
@@ -905,7 +911,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="text-gray-600 dark:text-gray-400 mb-4"
+                    className="text-gray-300 mb-4"
                   >
                     {paragraph}
                   </motion.p>
@@ -943,7 +949,7 @@ export default function Home() {
               <motion.div key={index} variants={staggerItemVariants}>
                 <motion.div
                   whileHover={{ scale: 1.03, y: -5, rotateY: 2 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-all duration-300"
+                  className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-800"
                 >
                   <motion.div
                     className="mb-4"
@@ -953,7 +959,7 @@ export default function Home() {
                     transition={{ delay: index * 0.1, type: 'spring', stiffness: 200 }}
                   >
                     <svg
-                      className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-4"
+                      className="w-8 h-8 text-blue-400 mb-4"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -965,7 +971,7 @@ export default function Home() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.2 }}
-                    className="text-gray-600 dark:text-gray-400 mb-4 italic"
+                    className="text-gray-300 mb-4 italic"
                   >
                     "{testimonial.quote}"
                   </motion.p>
@@ -975,8 +981,8 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.3 }}
                   >
-                    <p className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="text-sm text-gray-300">{testimonial.role}</p>
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -990,7 +996,7 @@ export default function Home() {
         <Section
           id="faq"
           title="Frequently Asked Questions"
-          className="bg-gray-50 dark:bg-gray-800/30"
+          className="bg-gray-900/30"
         >
           <StaggerContainer className="max-w-3xl mx-auto space-y-4">
             {[
@@ -1041,9 +1047,9 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center"
+                className="mt-8 pt-8 border-t border-gray-800 text-center"
               >
-                <p className="text-gray-600 dark:text-gray-400 mb-4">Prefer to book directly?</p>
+                <p className="text-gray-300 mb-4">Prefer to book directly?</p>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     href="#contact"
@@ -1060,7 +1066,7 @@ export default function Home() {
       </RevealOnScroll>
 
       {/* Footer */}
-      <footer className="bg-gray-900 dark:bg-black text-gray-400 py-8">
+      <footer className="bg-black text-gray-500 py-8 border-t border-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p>
             © {new Date().getFullYear()} MOEEN. Built with n8n, AI, and a lot of love for clean
@@ -1079,15 +1085,15 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
     <motion.div
       whileHover={{ scale: 1.01 }}
-      className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden"
+      className="bg-gray-900 rounded-lg shadow-md overflow-hidden border border-gray-800"
     >
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}
         whileTap={{ scale: 0.98 }}
-        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-800 transition-colors"
       >
-        <span className="font-semibold text-gray-900 dark:text-white">{question}</span>
+        <span className="font-semibold text-white">{question}</span>
         <motion.svg
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -1113,7 +1119,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className="overflow-hidden"
       >
-        <div className="px-6 py-4 text-gray-600 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+        <div className="px-6 py-4 text-gray-300 border-t border-gray-800">
           {answer}
         </div>
       </motion.div>
@@ -1151,7 +1157,7 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
           Name *
         </label>
         <input
@@ -1161,11 +1167,11 @@ function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-white"
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
           Email *
         </label>
         <input
@@ -1175,11 +1181,11 @@ function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-white"
         />
       </div>
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
           Company (optional)
         </label>
         <input
@@ -1188,11 +1194,11 @@ function ContactForm() {
           name="company"
           value={formData.company}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-white"
         />
       </div>
       <div>
-        <label htmlFor="automation" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="automation" className="block text-sm font-medium text-gray-300 mb-2">
           What do you want to automate? *
         </label>
         <textarea
@@ -1202,11 +1208,11 @@ function ContactForm() {
           rows={4}
           value={formData.automation}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-white"
         />
       </div>
       <div>
-        <label htmlFor="tools" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="tools" className="block text-sm font-medium text-gray-300 mb-2">
           What tools are you using today? *
         </label>
         <textarea
@@ -1216,11 +1222,11 @@ function ContactForm() {
           rows={3}
           value={formData.tools}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-white"
         />
       </div>
       <div>
-        <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">
           Budget range (optional)
         </label>
         <select
@@ -1228,7 +1234,7 @@ function ContactForm() {
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-white"
         >
           <option value="">Select budget range</option>
           <option value="under-5k">Under $5,000</option>
